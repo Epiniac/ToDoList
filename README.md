@@ -16,5 +16,16 @@ ToDoList practice with NodeJs ExpressJs MongoDB and Front languages
 4. Function to delete/remove a task (Optionnal: Pop-up to inform that the deleting task is not done)
 5. Function to filter tasks (Done and not yet done)
 
-## Optionnal 
-Autentification with PHP
+# Step 2: Optionnal 
+## Autentification with PHP
+1. Cookie function
+2. Storing user's id and password in a data base
+3. Showing tasks for each users
+
+# Step 3: Complete the project
+## Complete Figma Design
+1. Doing a complex animated interface with Figma and code it
+2. Launching the project in an Application
+3. Have Fun !
+
+### HETIC PROJECT 
