@@ -50,7 +50,7 @@ div[role="group"] {
     gap: 10px;
 }
 
-button {
+.btn {
     padding: 8px 16px;
     background-color: transparent;
     border: 1px solid #007bff;
@@ -60,7 +60,11 @@ button {
     font-size: 16px;
 }
 
-button.active {
+.btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+.btn:hover{
     background-color: #007bff;
     color: #fff;
 }
