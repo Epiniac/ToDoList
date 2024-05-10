@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Whisper&display=swap" rel="stylesheet">
+    <title>Connexion</title>
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4acdb1a3;
+    color: #ffffff;
+    height: 60px;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: "Whisper", cursive;
+    font-style: normal;
+    font-size: xx-large;
+    margin: 0;
+}
+
+#login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.conteneur {
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.conteneur h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.input {
+    margin-bottom: 15px;
+}
+
+.input label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input input {
+    display: block;
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff9d25;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ffe2be;
+    color: #ff9d25;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+</style>
+<body>
+    <header>
+        <h2>ToDoList</h2>
+    </header>
+    <section id="login">
+        <div class="conteneur">
+            <h2>Connexion</h2>
+            <form action="./index.html">
+                <div class="input">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn">Se connecter</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

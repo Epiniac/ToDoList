@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const taskList = document.querySelector('.listeTache');
     const filterButtons = document.querySelectorAll('div[role="group"] button');
 
+    
 
     // Fonction pour ajouter une tâche
     function addTask() {
-        const taskTitle = taskInput.value.trim(); 
+        const taskTitle = taskInput.value; 
 
         if (taskTitle !== '') { 
             const taskItem = document.createElement('li');
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <input type="checkbox" id="tacheFaite">
                 <label>${taskTitle}</label>
                 <button class="delete-button">
-                    <i class="bi bi-x"></i>
+                    <i class="fa-solid fa-trash"></i>
                 </button>
             `;
 
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             deleteButton.addEventListener('click', deleteTask);
 
 
-            const checkbox = taskItem.getElementById('tacheFaite');
+            const checkbox = taskItem.querySelector('#tacheFaite');
             checkbox.addEventListener('change', toggleTaskStatus);
         }
     }
@@ -41,4 +42,52 @@ document.addEventListener("DOMContentLoaded", function() {
         taskItem.remove(); 
     }
 
+
+
+    // Fonction pour masquer une tâche comme terminée
+    function toggleTaskStatus(event) {
+        const taskItem = event.target.closest('li'); 
+        if (event.target.checked) {
+            taskItem.classList.remove('task-done'); 
+        } else {
+            taskItem.classList.add('task-done'); 
+        }
+    }
+
+        // Fonction pour filtrer les tâches Toutes/A faire/Faites
+        function filterTasks(filterValue) {
+            const taskItems = document.querySelectorAll('.listeTache li');
+    
+            taskItems.forEach(function(item) {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                if (filterValue === 'all') {
+                    item.style.display = 'flex';
+                } else if (filterValue === 'todo' && !checkbox.checked) {
+                    item.style.display = 'flex'; 
+                } else if (filterValue === 'done' && checkbox.checked) {
+                    item.style.display = 'flex'; 
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        
+                // CSS .btn.active
+    filterButtons.forEach(function(button) {
+        if (button.dataset.filter === filterValue) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
+}
+
+
+
+    // Clic  bouton  filtre
+    filterButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const filterValue = this.dataset.filter; 
+            filterTasks(filterValue); 
+        });
+    });
 });
