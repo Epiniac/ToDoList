@@ -1,11 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Tahoma;
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
 }
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4acdb1a3;
+    color: #ffffff;
+    height: 60px;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: "Whisper", cursive;
+    font-style: normal;
+    font-size: xx-large;
+    margin: 0;
+}
+
+i {
+    color: #ffffff;
+    font-size: 24px;
+}
 #todolist {
     max-width: 600px;
     margin: 20px auto;
@@ -30,14 +56,15 @@ input[type="text"] {
 
 .ajouter {
     padding: 10px 20px;
-    border: 1px solid #007bff;
-    color: #007bff;
+    border: 1px solid #ff9d25;
+        color: #ff9d25;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    background-color: #ffead0;
 }
 .ajouter:hover{
-    background-color: #007bff;
+    background-color: #ff9d25;
     color: #fff;
 }
 
@@ -48,20 +75,25 @@ main {
 div[role="group"] {
     display: flex;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
-button {
+.btn {
     padding: 8px 16px;
     background-color: transparent;
-    border: 1px solid #007bff;
+    border: 1px solid #00aa85;
     border-radius: 4px;
-    color: #007bff;
+    color: #00aa85;
     cursor: pointer;
     font-size: 16px;
 }
 
-button.active {
-    background-color: #007bff;
+.btn.active {
+    background-color: #4acdb1;
+    color: #fff;
+}
+.btn:hover{
+    background-color: #a4e2d5;
     color: #fff;
 }
 
@@ -72,6 +104,11 @@ ul {
 
 li {
     margin-bottom: 10px;
+    background-color: #ffe2be;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
 }
 
 label {
@@ -81,17 +118,24 @@ label {
 
 input[type="checkbox"] {
     margin-right: 8px;
+    border-color: #ffffff;
 }
 
 .delete-button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 12px;
 }
 
 .delete-button i {
     color: #dc3545; 
     font-size: 1.2rem;
+    
 }
 
 .delete-button:hover i {

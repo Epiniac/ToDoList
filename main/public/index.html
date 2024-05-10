@@ -3,42 +3,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoList</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./Assets/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Whisper&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./Assets/CSS/index.css">
 </head>
 <body>
+    <header>
+        <h2>ToDoList</h2>
+        <a href="./connexion.html" class="button-link">
+            <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>
+        </a>
+    </header>
     <section id="todolist">
         <form>
-            <input required="" type="text" placeholder="Allez en cours..." name="title" id="tache">
+            <input required="" type="text" placeholder="Ajouter une tâche" name="title" id="tache">
             <button class="ajouter">Ajouter</button>
         </form>
         <main>
             <div role="group" class="groupebtn">
-                <button type="button"data-filter="all">Toutes</button>
-                <button type="button" data-filter="todo">A faire</button>
-                <button type="button" data-filter="done">Faites</button>
+                <button class="btn" type="button"data-filter="all">Toutes</button>
+                <button class="btn" type="button" data-filter="todo">A faire</button>
+                <button class="btn" type="button" data-filter="done">Faites</button>
             </div>
-
             <ul class="listeTache">
-            <li>
-                <input type="checkbox" id="todo-1">
-                <label for="todo-1">
-                    Tâche à faire 2
-                </label>
-                <button class="delete-button">
-                    <i class="bi bi-x"></i>
-                </button>
-                
-            </li>
-            <li >
-                <input type="checkbox" id="todo-2">
-                <label  for="todo-2">
-                    Tâche à faire 1
-                </label>
-                <button class="delete-button">
-                    <i class="bi bi-x"></i>
-                </button>
-            </li>
+
             </ul>
         </main>
     </section>
