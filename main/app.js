@@ -1,5 +1,6 @@
 const express = require("express");
 const indexRouter = require("./routes/index");
+// Protect est optionnel (test)
 const protectRouter = require("./routes/protect");
 const authentification = require("./middleware/authentifcation.js");
 var app = express();

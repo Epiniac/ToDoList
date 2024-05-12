@@ -1,5 +1,7 @@
+// ce ficher est un test de chargement des certificats afin de garantir une sécurité lors de la connexion
+// bref à pas toucher pour l'instant
 const https = require('https');
-const fs = require('fs';
+const fs = require('fs');
 
 // chargement des certificats
 const privateKey  = fs.readFileSync('./certs/certificat.key', 'utf8');
