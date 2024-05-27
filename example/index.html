@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Whisper&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Tahoma;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #4acdb1a3;
+        color: #ffffff;
+        height: 60px;
+        padding: 0 20px;
+    }
+
+    h1 {
+        font-family: "Whisper", cursive;
+        font-style: normal;
+        font-size: xx-large;
+        margin: 0;
+    }
+
+    i {
+        color: #ffffff;
+        font-size: 24px;
+    }
+    #todolist {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .ajouter {
+        padding: 10px 20px;
+        border: 1px solid #ff9d25;
+            color: #ff9d25;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        background-color: #ffead0;
+    }
+    .ajouter:hover{
+        background-color: #ff9d25;
+        color: #fff;
+    }
+
+    main {
+        margin-bottom: 20px;
+    }
+
+    div[role="group"] {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        background-color: transparent;
+        border: 1px solid #00aa85;
+        border-radius: 4px;
+        color: #00aa85;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn.active {
+        background-color: #4acdb1;
+        color: #fff;
+    }
+    .btn:hover{
+        background-color: #a4e2d5;
+        color: #fff;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+        background-color: #ffe2be;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+    }
+
+    label {
+        margin-left: 8px;
+        font-size: 16px;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 8px;
+        border-color: #ffffff;
+    }
+
+    .delete-button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-left: auto;
+    }
+
+    .delete-button i {
+        color: #dc3545; 
+        font-size: 1.2rem;
+        
+    }
+
+    .delete-button:hover i {
+        color: #bd2130; 
+    }
+</style>
+<body>
+    <header>
+        <h1>ToDoList</h1>
+        <!--<i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>-->
+    </header>
+    <section id="todolist">
+        <form>
+            <input required="" type="text" placeholder="Ajouter une tâche..." name="title" id="tache">
+            <button class="ajouter">Ajouter</button>
+        </form>
+        <main>
+            <div role="group" class="groupebtn">
+                <button class="btn" type="button"data-filter="all">Toutes</button>
+                <button class="btn" type="button" data-filter="todo">A faire</button>
+                <button class="btn" type="button" data-filter="done">Faites</button>
+            </div>
+            <ul class="listeTache">
+                
+            </ul>
+        </main>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const addButton = document.querySelector('.ajouter'); 
+            const taskInput = document.getElementById('tache'); 
+            const taskList = document.querySelector('.listeTache');
+            const filterButtons = document.querySelectorAll('div[role="group"] button');
+
+            
+
+            // Fonction pour ajouter une tâche
+            function addTask() {
+                const taskTitle = taskInput.value; 
+
+                if (taskTitle !== '') { 
+                    const taskItem = document.createElement('li');
+                    taskItem.innerHTML = `
+                        <input type="checkbox" id="tacheFaite">
+                        <label>${taskTitle}</label>
+                        <button class="delete-button">
+                            ❌
+                        </button>
+                    `;
+
+                    taskList.appendChild(taskItem);
+                    taskInput.value = '';
+
+                    const deleteButton = taskItem.querySelector('.delete-button');
+                    deleteButton.addEventListener('click', deleteTask);
+
+
+                    const checkbox = taskItem.querySelector('#tacheFaite');
+                    checkbox.addEventListener('change', toggleTaskStatus);
+                }
+            }
+
+            addButton.addEventListener('click', addTask);
+
+
+
+            // Fonction pour supprimer une tâche
+            function deleteTask(event) {
+                const taskItem = event.target.closest('li'); 
+                taskItem.remove(); 
+            }
+
+
+
+            // Fonction pour masquer une tâche comme terminée
+            function toggleTaskStatus(event) {
+                const taskItem = event.target.closest('li'); 
+                if (event.target.checked) {
+                    taskItem.classList.remove('task-done'); 
+                } else {
+                    taskItem.classList.add('task-done'); 
+                }
+            }
+
+                // Fonction pour filtrer les tâches Toutes/A faire/Faites
+                function filterTasks(filterValue) {
+                    const taskItems = document.querySelectorAll('.listeTache li');
+            
+                    taskItems.forEach(function(item) {
+                        const checkbox = item.querySelector('input[type="checkbox"]');
+                        if (filterValue === 'all') {
+                            item.style.display = 'flex';
+                        } else if (filterValue === 'todo' && !checkbox.checked) {
+                            item.style.display = 'flex'; 
+                        } else if (filterValue === 'done' && checkbox.checked) {
+                            item.style.display = 'flex'; 
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                
+                        // CSS .btn.active
+            filterButtons.forEach(function(button) {
+                if (button.dataset.filter === filterValue) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+
+
+            // Clic  bouton  filtre
+            filterButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const filterValue = this.dataset.filter; 
+                    filterTasks(filterValue); 
+                });
+            });
+        });
+    </script>
+</html>
